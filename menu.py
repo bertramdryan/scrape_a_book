@@ -1,0 +1,49 @@
+from app import books
+
+USER_CHOICE = '''Enter one of the following:
+
+- 'b' to look at 5-star books
+- 'c' to look at the cheapest books
+- 'n' to just get next available book on page
+- 'q' to exit
+Enter your choice: '''
+
+
+
+
+def print_five_star_books():
+    for book in books:
+        if book.rating == 5:
+            print(book)
+    menu()
+
+def print_cheapest_books():
+    cheapest_books = sorted(books, key=lambda x: x.price)
+    for book in cheapest_books:
+        print(book)
+
+    menu()
+
+book_generator = (x for x in books)
+
+
+def print_next_book():
+    print(next(book_generator))
+
+user_choice = {
+    'b': print_five_star_books,
+    'c': print_cheapest_books,
+    'n': print_next_book
+}
+
+def menu():
+    answer = input(USER_CHOICE)
+
+    while answer != 'q':
+        if answer in ('b', 'c', 'n'):
+            user_choice[answer]()
+        else:
+            print('print a valid command.')
+        answer = input(USER_CHOICE)
+
+menu()
