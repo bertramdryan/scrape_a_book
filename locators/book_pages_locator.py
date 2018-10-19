@@ -1,1 +1,1 @@
-NUMBER_OF_PAGES = ''
+NUMBER_OF_PAGES = 'div.page_inner section ul.pager li.current'

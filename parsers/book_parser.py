@@ -1,6 +1,9 @@
 import re
+import logging
 
 from locators.book_locators import BookLocators
+
+logger = logging.getLogger('scrapping.book_parser')
 class BookParser:
     """
     A class to take in an HTML page (or part of it) and find property of an
@@ -16,6 +19,7 @@ class BookParser:
     }
 
     def __init__(self, parent):
+        logging.DEBUG(f'New book parser created from `{parent}`')
         self.parent = parent
 
     def __repr__(self):
@@ -23,12 +27,15 @@ class BookParser:
 
     @property
     def name(self) -> str:
+        logger.debug('Finding book name...')
         locator = BookLocators.NAME_LOCATOR
         item_name = self.parent.select_one(locator).attrs['title']
+        logger.debug(f'Found book by the name of `{item_name}`')
         return item_name
 
     @property
     def page_link(self) -> str:
+        logger.debug('Finding book link...')
         locator = BookLocators.LINK_LOCATOR
         item_url = self.parent.select_one(locator).attrs['href']
         return item_url
@@ -36,6 +43,7 @@ class BookParser:
 
     @property
     def price(self) -> float:
+        logger.debug('Finding book price...')
         locator = BookLocators.PRICE_LOCATOR
         item_price = self.parent.select_one(locator).string
         pattern = '£([0-9]+\.[0-9]+)'
