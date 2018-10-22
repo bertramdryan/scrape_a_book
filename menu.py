@@ -1,4 +1,4 @@
-from app import books
+from app import bookpages
 
 USER_CHOICE = '''Enter one of the following:
 
@@ -10,31 +10,31 @@ USER_CHOICE = '''Enter one of the following:
 Enter your choice: '''
 
 
-
-
 def print_five_star_books():
-    for book in books:
+    for book in bookpages:
         if book.rating == 5:
             print(book)
 
 
 def print_cheapest_books():
-    cheapest_books = sorted(books, key=lambda x: x.price)
+    cheapest_books = sorted(bookpages, key=lambda x: x.price)
     for book in cheapest_books:
         print(book)
 
 
 def print_all_books():
-    for book in books:
+    for book in bookpages:
         print(book)
 
-    print(f'{len(books)} total books.')
+    print(f'{len(bookpages)} total books.')
 
-book_generator = (x for x in books)
+
+book_generator = (x for x in bookpages)
 
 
 def print_next_book():
     print(next(book_generator))
+
 
 user_choice = {
     'b': print_five_star_books,
@@ -42,6 +42,7 @@ user_choice = {
     'l': print_all_books,
     'n': print_next_book
 }
+
 
 def menu():
     answer = input(USER_CHOICE)
@@ -52,5 +53,6 @@ def menu():
         else:
             print('print a valid command.')
         answer = input(USER_CHOICE)
+
 
 menu()

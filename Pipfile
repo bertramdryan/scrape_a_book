@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiohttp = "*"
+attrs = "*"
+beautifulsoup4 = "*"
+"bs4" = "*"
+certifi = "*"
+chardet = "*"
+idna = "*"
+multidict = "*"
+requests = "*"
+"urllib3" = "*"
+yarl = "*"
+async_timeout = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

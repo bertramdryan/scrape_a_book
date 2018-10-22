@@ -4,6 +4,8 @@ import logging
 from locators.book_locators import BookLocators
 
 logger = logging.getLogger('scrapping.book_parser')
+
+
 class BookParser:
     """
     A class to take in an HTML page (or part of it) and find property of an
@@ -19,7 +21,7 @@ class BookParser:
     }
 
     def __init__(self, parent):
-        logging.DEBUG(f'New book parser created from `{parent}`')
+        logging.info(f'New book parser created from `{parent}`')
         self.parent = parent
 
     def __repr__(self):
