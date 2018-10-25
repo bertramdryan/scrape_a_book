@@ -5,6 +5,7 @@ import time
 
 all_times = []
 
+
 async def fetch_page(session, url):
     page_start = time.time()
     async with async_timeout.timeout(10):
